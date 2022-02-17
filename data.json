@@ -1,0 +1,15 @@
+[
+  {
+    "titulo":"titulodelibro",
+    "genero":"novela",
+    "isbn":"11434523",
+    "ejemplares":"4"
+  },
+  {
+    "titulo":"titulodelibro2",
+    "genero":"terror",
+    "isbn":"11443534",
+    "ejemplares":"10"
+  }
+
+]
