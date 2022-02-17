@@ -5,7 +5,8 @@ class App {
     }
 
 
-    datosForm() {
+    datosForm()
+    {
 
         var titulo, isbn, genero, imagen;
 
@@ -150,6 +151,40 @@ class App {
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    // Recibe Objeto Json y carga los datos en la biblioteca
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    CargaBiblio(jsonObj)
+    {
+        console.log(jsonObj["Biblioteca"]['nombre']);
+        this.biblioteca.nombre = jsonObj["Biblioteca"]['nombre'];
+
+
+        var ninventario = jsonObj["Biblioteca"]['inventario'].length;
+
+        for (let i=0; i < ninventario ;i++){
+            var imagen = jsonObj["Biblioteca"]['inventario'][i]['imagen'];
+            var isbn = jsonObj["Biblioteca"]['inventario'][i]['isbn'];
+            var titulo = jsonObj["Biblioteca"]['inventario'][i]['titulo'];
+            var genero = jsonObj["Biblioteca"]['inventario'][i]['genero'];
+
+            var publicacion = new Publicacion(imagen,isbn,titulo,genero);
+
+            var nejemplares = jsonObj["Biblioteca"]['inventario'][i]['ejemplares'].length;
+
+            for (let j=0; j<nejemplares ;j++){
+
+                var ubicacion = jsonObj["Biblioteca"]['inventario'][i]['ejemplares'][j]['ubicacion'];
+                var estado = jsonObj["Biblioteca"]['inventario'][i]['ejemplares'][j]['estado'];
+
+                var ejemplar = new Ejemplar(ubicacion,estado);
+                publicacion.addEjemplar(ejemplar);
+            }
+            this.biblioteca.addPublicacion(publicacion);
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
     renderCarousel(inventario) {
 
         var summaryCarousel = document.querySelector("#summaryCarousel")
@@ -250,13 +285,8 @@ class App {
     {
         var data = [];
 
-        /*var Botones =
-            <a href="#"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-info"> <i class="fas fa-edit"></i> Editar </a>
-
-            <a href="#"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i> </a>
-       ;*/
-
         var ninventario = this.biblioteca.inventario.length;
+        var opciones = '';//varieble en blanco para opciones
 
         for (let i = 0; i < ninventario; i++) {
 
@@ -264,7 +294,7 @@ class App {
             var titulo = this.biblioteca.inventario[i].titulo;
             var genero = this.biblioteca.inventario[i].genero;
             var nejemplares = this.biblioteca.inventario[i].ejemplares.length;
-            data.push([titulo, genero, isbn, nejemplares]);
+            data.push([titulo, genero, isbn, nejemplares, opciones]);
 
         }
 
@@ -282,7 +312,8 @@ class App {
                 "Titulo",
                 "Genero",
                 "ISBN",
-                "Ejemplares"
+                "Ejemplares",
+                "Opciones"
             ],
             "data": this.dataforDatatable()
         };
@@ -294,13 +325,71 @@ class App {
                 columns: [
                     // Sort the second column in ascending order
                     {select: 1, sort: "desc"},
+
+                    {
+                        select: 4,
+                        render: function(data, cell, row) {
+                            return data + "" +
+                                "<button id="+data.isbn+" type='button' data-row='Opciones" + row.dataIndex + "'>" +
+                                "<a href=\"detalles.html\" title=\"Editar datos\" \n" +
+                                "class=\"btn btn-sm btn-info\"> Editar</a></button>" +
+                                "" +
+                                "<button id="+data.isbn+" type='button' data-row='Opciones" + row.dataIndex + "'>" +
+                                "<a href=\"detalles.html\" title=\"Borrar\" \n" +
+                                "class=\"btn btn-sm btn-danger\"> Borrar</a></button>";
+                        }
+                    }
                 ],
                 'paging': true,
 
                 'data': myData,
-
-            });
+           });
         })
+
+
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    // Genera Json de la Biblioteca
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    ListaBiblioJson()
+    {
+        var ListaInventario = [];                                  // Lista de Inventario
+        var ninventario     = this.biblioteca.inventario.length;
+
+        for (let i = 0; i < ninventario; i++)
+        {
+
+            var ListaEjemplares = [];                              // Array con los ejemplares
+            var nejemplares = this.biblioteca.inventario[i].ejemplares.length;
+            for (let j = 0; j < nejemplares; j++)
+            {
+                ListaEjemplares.push( {
+                    "ubicacion":this.biblioteca.inventario[i].ejemplares[j].ubicacion,
+                    "estado":this.biblioteca.inventario[i].ejemplares[j].estado
+                });
+            }
+
+            ListaInventario.push( {
+                "imagen":this.biblioteca.inventario[i].imagen,
+                "isbn":this.biblioteca.inventario[i].isbn,
+                "titulo":this.biblioteca.inventario[i].titulo,
+                "genero":this.biblioteca.inventario[i].genero,
+                "ejemplares": ListaEjemplares
+            });
+        }
+
+        var DatosBiblio = {};
+        DatosBiblio.nombre     = this.biblioteca.nombre;
+        DatosBiblio.inventario = ListaInventario;                          // Añadimos la Inventario a la Biblioteca
+        var DatosJSON = {};
+        DatosJSON.Biblioteca = DatosBiblio;
+
+
+        console.log(JSON.stringify(DatosJSON));
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 }
 

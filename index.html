@@ -16,17 +16,44 @@
         document.addEventListener("DOMContentLoaded", function(event) {
             let app = new App();
 
-            //app.fakeData()
-            app.InicioBiblio()
-            app.renderCarousel(app.biblioteca.inventario)
-            app.renderDatatables();
-            console.log(app.biblioteca);
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            // Recibe Objeto Json y carga los datos en la biblioteca
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            function CargaJsonBiblio()
+            {
+                const requestURL = './biblioteca.json';
+                const request = new XMLHttpRequest();
+                request.open('GET', requestURL);
+                request.responseType = 'json';
+                request.send();
+                request.onload = function() {
+                    const Biblioteca = request.response;
+                    app.CargaBiblio(Biblioteca);
+                    console.log(app.biblioteca);
+                    app.renderDatatables();
+                    app.renderCarousel(app.biblioteca.inventario);
+                }
+            }
+            ////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            app.fakeData()
+            //app.InicioBiblio()
+            CargaJsonBiblio();
+            //console.log(app.biblioteca);
+
+            //app.renderCarousel(app.biblioteca.inventario)
+            //app.renderDatatables();
+            //console.log(app.biblioteca);
             //console.log(app.biblioteca.inventario);
 
 
 
             document.getElementById ("enviar").addEventListener ("click",() => {
                 app.datosForm();})
+
+            document.getElementById ("GenJSON").addEventListener ("click",() => {
+                app.ListaBiblioJson();})
 
 
         });
@@ -112,54 +139,83 @@
 
                         </div>
 
-                <div class="col-6">
+                        <div class="col-6">
 
-                    <div class="col-12">
+                            <div class="">
 
-                        <h2>Añadir nueva publicacion</h2>
+                                <h2>Añadir nueva publicacion</h2>
+                                <button class="btn btn-info" id="GenJSON" >Generar JSON</button>
 
-                        <form action="#" id="dataForm" class="row g-3 needs-validation" novalidate>
-                            <div class="form-group" >
-                                <div class="col-md-4"style="padding-bottom: 1em">
-                                    <label for="titulo" class="form-label">Titulo</label>
-                                    <input type="text" class="form-control" id="titulo" required>
-                                    <div class="valid-feedback">
-                                        Esta bien!!
+                                <form action="#" id="dataForm" class="row g-3 needs-validation" novalidate>
+                                    <div class="form-group" >
+                                        <div class="col-md-4"style="padding-bottom: 1em">
+                                            <label for="titulo" class="form-label">Titulo</label>
+                                            <input type="text" class="form-control" id="titulo" required>
+                                            <div class="valid-feedback">
+                                                Esta bien!!
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4"style="padding-bottom: 1em">
+                                            <label for="isbn" class="form-label">ISBN</label>
+                                            <input type="number" class="form-control" id="isbn" min="0" required>
+                                            <div class="valid-feedback">
+                                                Esta bien!!
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6"style="padding-bottom: 1em">
+                                            <label for="genero" class="form-label">Genero</label>
+                                            <input type="text" class="form-control" id="genero" required>
+                                            <div class="valid-feedback">
+                                                Esta bien!!
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4"style="padding-bottom: 1em">
+                                            <label for="imagen" class="form-label">Imagen</label>
+                                            <input type="text" class="form-control" id="imagen" required>
+                                            <div class="valid-feedback">
+                                                Esta bien!!
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <button class="btn btn-primary" id="enviar" >Enviar</button>
+
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4"style="padding-bottom: 1em">
-                                    <label for="isbn" class="form-label">ISBN</label>
-                                    <input type="number" class="form-control" id="isbn" min="0" required>
-                                    <div class="valid-feedback">
-                                        Esta bien!!
-                                    </div>
-                                </div>
+                                </form>
 
-                                <div class="col-md-6"style="padding-bottom: 1em">
-                                    <label for="genero" class="form-label">Genero</label>
-                                    <input type="text" class="form-control" id="genero" required>
-                                    <div class="valid-feedback">
-                                        Esta bien!!
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4"style="padding-bottom: 1em">
-                                    <label for="imagen" class="form-label">Imagen</label>
-                                    <input type="text" class="form-control" id="imagen" required>
-                                    <div class="valid-feedback">
-                                        Esta bien!!
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <button class="btn btn-primary" id="enviar" >Enviar</button>
-
-                                </div>
                             </div>
-                        </form>
+                        </div>
 
-                    </div>
-                </div>
+                        <div class="col-6">
+
+                            <!--<table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Start Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Brandon Jacob</td>
+                                    <td>Designer</td>
+                                    <td>28</td>
+                                    <td>2016-05-25</td>
+                                </tr>
+
+                                </tbody>
+                            </table>-->
+
+
+
+                        </div>
 
             </div>
     </div>
