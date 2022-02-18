@@ -16,17 +16,11 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             app = new App();
-
-
             document.getElementById('titulo').innerHTML= app.getCookie('titulo');
             document.getElementById('genero').innerHTML= app.getCookie('genero');
             document.getElementById('isbn').innerHTML= app.getCookie('isbn');
             document.getElementById('ejemplares').innerHTML= app.getCookie('ejemplares');
-
-
         });
-
-
     </script>
 
 </head>
@@ -60,55 +54,50 @@
         </nav>
     </div>
 
-    <!--Container Main start-->
+                    <!--Container Main start-->
 
-    <div class="container">
-            <div class="row">
+                        <div class="container">
+                                <div class="row">
 
-                        <div class="col-6">
+                                    <div class="col-6">
 
-                                <img src="img/product-4.jpg">
-                        </div>
+                                        <img src="img/product-4.jpg">
 
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h1>Titulo</h1>
-                                    <h2 id="titulo">Titulo del libro</h2>
-                                    <h3>Genero</h3>
-                                    <h4 id="genero">Genero del libro</h4>
-                                    <h5>ISBN</h5>
-                                    <p id="isbn">isbn</p>
-                                    <p >Ejemplares: <span id="ejemplares">Numero de ejemplares</span></p>
+                                    </div>
+
+                                    <div class="col-6">
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h1>Titulo</h1>
+                                                <h2 id="titulo">Titulo del libro</h2>
+                                                <h3>Genero</h3>
+                                                <h4 id="genero">Genero del libro</h4>
+                                                <h5>ISBN</h5>
+                                                <p id="isbn">isbn</p>
+                                                <p >Ejemplares: <span id="ejemplares">Numero de ejemplares</span></p>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <h1>Sinopsis</h1>
+                                                <h3>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</h3>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
                                 </div>
-
-                                <div class="col-12">
-                                    <h1>Sinopsis</h1>
-                                    <h3>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</h3>
-
-                                </div>
-
-                            </div>
-
-
-
                         </div>
-
-            </div>
-    </div>
 </div>
 
 <!--Container Main end-->
-<script src="js/simple-datatables/simple-datatables.js"></script>
-<script src='js/faker/faker.js'></script>
 <script src='js/Ejemplar.js'></script>
 <script src='js/Publicacion.js'></script>
 <script src='js/Biblioteca.js'></script>
 <script src='js/App.js'></script>
-
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
-<!--<script src="js/bootstrap.bundle.js"></script>-->
 
 <script type='text/Javascript'>document.addEventListener("DOMContentLoaded", function(event) {
 

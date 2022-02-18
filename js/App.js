@@ -38,7 +38,7 @@ class App {
         var DatosJSON = {};
         DatosJSON.Biblioteca = DatosBiblio;
 
-
+        console.log('___Datos Biblioteca en JSON___');
         console.log(JSON.stringify(DatosJSON));
     }
 
@@ -79,7 +79,7 @@ class App {
 
     CargaBiblio(jsonObj)// Recibe Objeto Json y carga los datos en la biblioteca
     {
-        console.log(jsonObj["Biblioteca"]['nombre']);
+        console.log("____Biblioteca cargada: "+ jsonObj["Biblioteca"]['nombre']+"____");
         this.biblioteca.nombre = jsonObj["Biblioteca"]['nombre'];
 
 
@@ -153,7 +153,6 @@ class App {
 
     PublicacionForm()//Guarda publicacion
     {
-
         var titulo, isbn, genero, imagen;
 
         titulo = document.getElementById("titulo").value;
@@ -161,14 +160,14 @@ class App {
         genero = document.getElementById("genero").value;
         imagen = document.getElementById("imagen").value;
 
-        var publicacion = new Publicacion(imagen, isbn, titulo, genero);
-
-        this.biblioteca.addPublicacion(publicacion);
-
-
-
-        console.log("Datos Nuevos..");
-        console.log(this.biblioteca);
+        if(titulo!=='' && isbn!=='' && genero!=='' && imagen!==''){
+            var publicacion = new Publicacion(imagen, isbn, titulo, genero);
+            this.biblioteca.addPublicacion(publicacion);
+            console.log("Datos Nuevos....");
+            console.log(this.biblioteca);
+        }else{
+            alert("Datos no validos");
+        }
     }
 
     EjemplarForm()//Guarda ejemplar
@@ -242,10 +241,6 @@ class App {
 
     renderDatatables()//llamo a metodo dentro para pasar las lineas
     {
-        /**
-         * Initiate Datatables
-         */
-
         let myData = {
             "headings": [
                 "Titulo",
@@ -256,7 +251,7 @@ class App {
             ],
             "data": this.dataforDatatable()
         };
-        console.log(myData)
+        //console.log(myData)
         const datatables = document.querySelectorAll('.datatable')
         datatables.forEach(datatable => {
             new simpleDatatables.DataTable(datatable, {

@@ -2,14 +2,15 @@
         let app;
 
         function Borrar( isbn ) {
-            alert('Borrar isbn: '+isbn);
+            alert('Se ha borrado la publicacion con ISBN: '+isbn);
             app.BorrarPublicacion( isbn );
             app.renderDatatables();
+
+            console.log("Inventario actualizado....")
             console.log(app.biblioteca.inventario)
 
         }
         function detalles(data){
-            console.log(data)
             app.detallesPublicacion(data);
         }
 
@@ -30,24 +31,18 @@
         request.send();
         request.onload = function() {
             const Biblioteca = request.response;
-            //app.CargaBiblio(Biblioteca);
-            app.fakeData()
-            //app.ListaBiblioJson();//Saca biblioteca en json por consola
-            app.renderGrafico();
+            app.CargaBiblio(Biblioteca);//Para utilizar datos del archivo json
+            //app.fakeData()//Para utilizar datos creados con faker
             app.renderDatatables();
+            console.log("Datos Cargados....");
             console.log(app.biblioteca);
-            app.renderCarousel(app.biblioteca.inventario);
-            //app.renderOption(app.biblioteca.inventario)
+
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    //app.fakeData()
-    //app.InicioBiblio()
     CargaJsonBiblio();
-
-
 
     document.getElementById ("enviar").addEventListener ("click",() => {
         app.PublicacionForm();})
