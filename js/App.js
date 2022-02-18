@@ -537,11 +537,5 @@ class App {
             this.biblioteca.addPublicacion(publicacion);
         }
     }
-
-    actualizarPantalla(){
-
-
-    }
-
 }
 
