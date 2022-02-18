@@ -8,8 +8,8 @@
     <!--<link href='css/bootstrap.css'  rel="stylesheet">-->
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/style.css"  rel="stylesheet" />
+    <link href="css/estilos.css"  rel="stylesheet" />
     <link href="css/simple-datatables/style.css"  rel="stylesheet" />
 
 
@@ -39,13 +39,9 @@
                 </a>
                 <div class="nav_list">
 
-                    <a href="#"  class="nav-link color">
-                        <i class="fa fa-user nav_icon"></i>
-                        <span class="nav_name">Empleados</span>
-                    </a>
-                    <a href="detalles.html"  class="nav-link color">
-                        <i class="fa fa-address-book nav_icon"></i>
-                        <span class="nav_name">Clientes</span>
+                    <a href="gestion.html"  class="nav-link color">
+                        <i class="fa fa-clipboard nav_icon"></i>
+                        <span class="nav_name">Gestion</span>
                     </a>
 
 
@@ -59,26 +55,23 @@
                         <div class="container">
                                 <div class="row">
 
-                                    <div class="col-6">
+                                    <div  class="col-6">
 
-                                        <img src="img/product-4.jpg">
+                                        <img id="imagenPrueba" src="img/product-4.jpg">
 
                                     </div>
 
                                     <div class="col-6">
 
                                         <div class="row">
-                                            <div class="col-12">
-                                                <h1>Titulo</h1>
-                                                <h2 id="titulo">Titulo del libro</h2>
-                                                <h3>Genero</h3>
-                                                <h4 id="genero">Genero del libro</h4>
-                                                <h5>ISBN</h5>
-                                                <p id="isbn">isbn</p>
+                                            <div id="datosLibro" class="col-12">
+                                                <h1>Titulo: <span id="titulo"></span></h1>
+                                                <h3>Genero: <span id="genero"></span></h1>
+                                                <h5>ISBN: <span id="isbn"></span></h5>
                                                 <p >Ejemplares: <span id="ejemplares">Numero de ejemplares</span></p>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div id="datosLibro" class="col-12">
                                                 <h1>Sinopsis</h1>
                                                 <h3>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</h3>
                                             </div>

@@ -8,6 +8,7 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css"  rel="stylesheet" />
+    <link href="css/estilos.css"  rel="stylesheet" />
     <link href="css/simple-datatables/style.css"  rel="stylesheet" />
 
     <script>
@@ -48,14 +49,11 @@
 
                         <div class="col-12">
                             <button class="btn btn-primary" id="GenJSON" >Generar datos JSON en consola</button>
-                            <table class="table table-borderless datatable" id="datatable">
-
-                            </table>
-
+                            <table class="table table-borderless datatable" id="datatable"></table>
                         </div>
 
                         <div class="col-6">
-                                <h2>Añadir nueva publicacion</h2>
+                                <h2 id="txtForm">Añadir nueva publicacion</h2>
                                 <form action="#" id="dataForm" class="row g-3 needs-validation" novalidate>
                                     <div class="form-group" >
                                         <div class="col-md-4"style="padding-bottom: 1em">
@@ -98,7 +96,7 @@
                         </div>
 
                         <div class="col-6">
-                            <h2>Añadir nuevo ejemplar</h2>
+                            <h2 id="txtForm">Añadir nuevo ejemplar</h2>
                             <form action="#" id="ejemplarForm" class="row g-3 needs-validation" novalidate>
                                 <div class="form-group" >
                                     <div class="col-md-4"style="padding-bottom: 1em">
