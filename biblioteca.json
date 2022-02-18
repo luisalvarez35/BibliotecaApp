@@ -10,12 +10,16 @@
                                                 "estado":"prestado"
                                             },
                                             {
-                                                "ubicacion":"",
+                                                "ubicacion":"Pasillo3",
                                                 "estado":"extraviado"
                                             },
                                             {
                                                 "ubicacion":"pasillo1",
                                                 "estado":"disponible"
+                                            },
+                                            {
+                                              "ubicacion":"pasillo21",
+                                              "estado":"disponible"
                                             }]
                               },
                               {
@@ -53,6 +57,14 @@
                                             {
                                                 "ubicacion":"pasillo8",
                                                 "estado":"disponible"
+                                            },
+                                            {
+                                              "ubicacion":"pasillo48",
+                                              "estado":"desscatalogado"
+                                            },
+                                            {
+                                              "ubicacion":"pasillo28",
+                                              "estado":"prestado"
                                             }]
                             }
                             ]

@@ -75,8 +75,6 @@ class App {
 
     }
 
-
-
     CargaBiblio(jsonObj)// Recibe Objeto Json y carga los datos en la biblioteca
     {
         console.log("____Biblioteca cargada: "+ jsonObj["Biblioteca"]['nombre']+"____");
@@ -186,18 +184,24 @@ class App {
 
         var ninventario = this.biblioteca.inventario.length;
 
+        var noExiste =0;
+
         for (let i = 0; i < ninventario; i++) {
 
             var titulo = this.biblioteca.inventario[i]['titulo'];
 
             if (titulo === publicacion) {
+                noExiste=0;
                 this.biblioteca.inventario[i].addEjemplar(ejemplar);
-                console.log("Nuevo ejemplar introducido")
+                console.log("Nuevo ejemplar introducido..")
+                console.log("Datos Nuevos..");
+                console.log(this.biblioteca.inventario);
+                break;
+            }else{
+                noExiste=1;
             }
-
         }
-        console.log("Datos Nuevos..");
-        console.log(this.biblioteca.inventario);
+        if(noExiste==1)alert('La Publicacion no existe o los datos son incorrectos..')
     }
 
     renderCarousel(inventario)
@@ -342,11 +346,7 @@ class App {
         }
     }
 
-
-
-
-
-    renderOption(inventario)
+    /*renderOption(inventario)
     {
 
         var summaryOption = document.querySelector("#publicacion")
@@ -365,177 +365,7 @@ class App {
             summaryOption.appendChild(cloneTemplateCarousel);
         }
 
-    }
+    }*/
 
-    dataforDatatableArray()//No se usa, primera version
-    {
-        var data = [];
-
-        var BiblioArray = {
-            "Biblioteca": {
-                "nombre": "Biblioteca",
-                "inventario": [{
-                    "imagen": "./img/slides-1.jpg",
-                    "isbn": "123456",
-                    "titulo": "Coches",
-                    "genero": "Educacion",
-                    "ejemplares": [{
-                        "ubicacion": "",
-                        "estado": "prestado"
-                    },
-                        {
-                            "ubicacion": "",
-                            "estado": "extraviado"
-                        },
-                        {
-                            "ubicacion": "pasillo1",
-                            "estado": "disponible"
-                        }]
-                },
-                    {
-                        "imagen": "./img/slides-2.jpg",
-                        "isbn": "1543456",
-                        "titulo": "Cocina",
-                        "genero": "Novela",
-                        "ejemplares": [
-                            {
-                                "ubicacion": "pasillo4",
-                                "estado": "desscatalogado"
-                            },
-                            {
-                                "ubicacion": "pasillo9",
-                                "estado": "disponible"
-                            },
-                            {
-                                "ubicacion": "pasillo6",
-                                "estado": "prestado"
-                            }]
-                    },
-                    {
-                        "imagen": "./img/slides-3.jpg",
-                        "isbn": "4553456",
-                        "titulo": "Informatica",
-                        "genero": "Tecnico",
-                        "ejemplares": [{
-                            "ubicacion": "pasillo6",
-                            "estado": "desscatalogado"
-                        },
-                            {
-                                "ubicacion": "pasillo2",
-                                "estado": "extraviado"
-                            },
-                            {
-                                "ubicacion": "pasillo8",
-                                "estado": "disponible"
-                            }]
-                    }
-                ]
-            }
-        }
-
-        var ninventario = BiblioArray["Biblioteca"]['inventario'].length;
-
-        for (let i = 0; i < ninventario; i++) {
-            var isbn = BiblioArray["Biblioteca"]['inventario'][i]['isbn'];
-            var titulo = BiblioArray["Biblioteca"]['inventario'][i]['titulo'];
-            var genero = BiblioArray["Biblioteca"]['inventario'][i]['genero'];
-            var nejemplares = BiblioArray["Biblioteca"]['inventario'][i]['ejemplares'].length;
-            data.push([titulo, genero, isbn, nejemplares]);
-        }
-        return data;
-    }
-
-    InicioBiblio()// Inicializar biblioteca con datos de array
-    {
-        var BiblioArray = {
-            "Biblioteca": {
-                "nombre": "Biblioteca",
-                "inventario": [{
-                    "imagen": "./img/slides-1.jpg",
-                    "isbn": "123456",
-                    "titulo": "Coches",
-                    "genero": "Educacion",
-                    "ejemplares": [{
-                        "ubicacion": "",
-                        "estado": "prestado"
-                    },
-                        {
-                            "ubicacion": "",
-                            "estado": "extraviado"
-                        },
-                        {
-                            "ubicacion": "pasillo1",
-                            "estado": "disponible"
-                        }]
-                },
-                    {
-                        "imagen": "./img/slides-2.jpg",
-                        "isbn": "1543456",
-                        "titulo": "Cocina",
-                        "genero": "Novela",
-                        "ejemplares": [
-                            {
-                                "ubicacion": "pasillo4",
-                                "estado": "desscatalogado"
-                            },
-                            {
-                                "ubicacion": "pasillo9",
-                                "estado": "disponible"
-                            },
-                            {
-                                "ubicacion": "pasillo6",
-                                "estado": "prestado"
-                            }]
-                    },
-                    {
-                        "imagen": "./img/slides-3.jpg",
-                        "isbn": "4553456",
-                        "titulo": "Informatica",
-                        "genero": "Tecnico",
-                        "ejemplares": [{
-                            "ubicacion": "pasillo6",
-                            "estado": "desscatalogado"
-                        },
-                            {
-                                "ubicacion": "pasillo2",
-                                "estado": "extraviado"
-                            },
-                            {
-                                "ubicacion": "pasillo8",
-                                "estado": "disponible"
-                            }]
-                    }
-                ]
-            }
-        }
-
-        //console.log(BiblioArray);
-        //console.log(BiblioArray["Biblioteca"]['nombre']);
-
-        this.biblioteca.nombre = BiblioArray["Biblioteca"]['nombre'];
-
-        var ninventario = BiblioArray["Biblioteca"]['inventario'].length;
-
-        for (let i = 0; i < ninventario; i++) {
-            var imagen = BiblioArray["Biblioteca"]['inventario'][i]['imagen'];
-            var isbn = BiblioArray["Biblioteca"]['inventario'][i]['isbn'];
-            var titulo = BiblioArray["Biblioteca"]['inventario'][i]['titulo'];
-            var genero = BiblioArray["Biblioteca"]['inventario'][i]['genero'];
-            var publicacion = new Publicacion(imagen, isbn, titulo, genero);
-
-            var nejemplares = BiblioArray["Biblioteca"]['inventario'][i]['ejemplares'].length;
-
-            for (let j = 0; j < nejemplares; j++) {
-
-                var ubicacion = BiblioArray["Biblioteca"]['inventario'][i]['ejemplares'][j]['ubicacion'];
-                var estado = BiblioArray["Biblioteca"]['inventario'][i]['ejemplares'][j]['estado'];
-
-                var ejemplar = new Ejemplar(ubicacion, estado);
-                publicacion.addEjemplar(ejemplar);
-            }
-
-            this.biblioteca.addPublicacion(publicacion);
-        }
-    }
 }
 

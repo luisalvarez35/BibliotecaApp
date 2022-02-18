@@ -5,36 +5,30 @@ $ColorHover: rgb(128, 0, 0);
 
 //color de fondo de la web publica.
 body{
-
     background-color: $ColorBody;
-
 }
 
 //color del panel del menu de navegación lateral
 .l-navbar{
-
     background-color: $ColorNav;
 }
 
 //color hover sobre los botones del menu de navegación lateral
 .nav-link:hover{
-
     background-color: $ColorHover !important;
 }
+
 table{
     border-style:solid;
     border-radius: 10px;
     border-width: 5px;
-    
 }
+
 form{
     border-style: solid;
     border-radius: 10px;
     border-width: 4px;
     border-color: black;
-}
-#txtForm{
-    padding-bottom: 10px;
 }
 
 .txtForm{
@@ -46,7 +40,7 @@ form{
     margin-right: 25%;
     width: 50%;
     height: 50%;
-  }
+}
   
 #pieChart {
     margin-top: 20px;
@@ -56,19 +50,17 @@ form{
     border-color: black;
     margin-left: 25%;
     margin-right: 25%;
-  }
+}
 
 #imagenPrueba{
     margin-top: 50px;
     border-style:dotted;
     border-radius: 50px;
     border-width: 10px;
-
 }
 
 #datosLibro{
     margin-top: 50px;
     border-style:solid;
     border-radius: 10px;
-
 }
