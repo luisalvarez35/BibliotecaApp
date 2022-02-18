@@ -13,50 +13,6 @@
     <link href="css/simple-datatables/style.css"  rel="stylesheet" />
 
     <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-            let app = new App();
-
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            // Recibe Objeto Json y carga los datos en la biblioteca
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            function CargaJsonBiblio()
-            {
-                const requestURL = './biblioteca.json';
-                const request = new XMLHttpRequest();
-                request.open('GET', requestURL);
-                request.responseType = 'json';
-                request.send();
-                request.onload = function() {
-                    const Biblioteca = request.response;
-                    app.CargaBiblio(Biblioteca);
-                    console.log(app.biblioteca);
-                    app.renderDatatables();
-                    app.renderCarousel(app.biblioteca.inventario);
-                }
-            }
-            ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-            app.fakeData()
-            //app.InicioBiblio()
-            CargaJsonBiblio();
-            //console.log(app.biblioteca);
-
-            //app.renderCarousel(app.biblioteca.inventario)
-            //app.renderDatatables();
-            //console.log(app.biblioteca);
-            //console.log(app.biblioteca.inventario);
-
-
-
-            document.getElementById ("enviar").addEventListener ("click",() => {
-                app.datosForm();})
-
-            document.getElementById ("GenJSON").addEventListener ("click",() => {
-                app.ListaBiblioJson();})
-
-
-        });
 
     </script>
 
@@ -99,14 +55,7 @@
 
                         <div class="col-6">
                             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                                <!-- Carousel indicators -->
-                                <!--<ol class="carousel-indicators">
-                                    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-                                    <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-                                    <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
-                                </ol>-->
 
-                                <!-- Wrapper for carousel items -->
                                 <div class="carousel-inner" id="summaryCarousel">
                                     <div class="carousel-item active">
                                         <img src="img/slides-1.jpg" class="d-block w-100">
@@ -191,31 +140,65 @@
 
                         <div class="col-6">
 
-                            <!--<table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Position</th>
-                                    <th scope="col">Age</th>
-                                    <th scope="col">Start Date</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Brandon Jacob</td>
-                                    <td>Designer</td>
-                                    <td>28</td>
-                                    <td>2016-05-25</td>
-                                </tr>
+                            <h2>Añadir nuevo ejemplar</h2>
 
-                                </tbody>
-                            </table>-->
+
+                            <form action="#" id="ejemplarForm" class="row g-3 needs-validation" novalidate>
+                                <div class="form-group" >
+                                    <div class="col-md-4"style="padding-bottom: 1em">
+                                        <label for="ubicacion" class="form-label">Ubicacion</label>
+                                        <input type="text" class="form-control" id="ubicacion" required>
+                                        <div class="valid-feedback">
+                                            Esta bien!!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4"style="padding-bottom: 1em">
+                                        <label for="estado" class="form-label">Estado</label>
+                                        <input type="text" class="form-control" id="estado" min="0" required>
+                                        <div class="valid-feedback">
+                                            Esta bien!!
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4"style="padding-bottom: 1em">
+                                        <label for="publicacion" class="form-label">Publicacion</label>
+                                        <input type="text" class="form-control" id="publicacion" min="0" required>
+                                        <div class="valid-feedback">
+                                            Esta bien!!
+                                        </div>
+                                    </div>
+
+                                    <!--<div class="col-md-6"style="padding-bottom: 1em">
+                                        <label for="publicacion" class="form-label">Publicacion</label>
+                                        <select id="publicacion" name="select">
+
+                                        </select>
+                                        <div class="valid-feedback">
+                                            Esta bien!!
+                                        </div>
+                                    </div>
+
+                                    <template id="select">
+                                        <option id="option" value=""></option>
+                                    </template>-->
+
+
+
+                                    <div class="col-12">
+                                        <button class="btn btn-primary" id="enviarEjemplar" >Enviar</button>
+
+                                    </div>
+                                </div>
+                            </form>
 
 
 
                         </div>
+
+                <div class="coll-6">
+                    <div id="pieChart" style="min-height: 400px;" class="echart"></div>
+
+                </div>
 
             </div>
     </div>
@@ -224,11 +207,13 @@
 <!--Container Main end-->
 <script src='js/validationForm.js'></script>
 <script src="js/simple-datatables/simple-datatables.js"></script>
+<script src="js/echarts/echarts.min.js"></script>
 <script src='js/faker/faker.js'></script>
 <script src='js/Ejemplar.js'></script>
 <script src='js/Publicacion.js'></script>
 <script src='js/Biblioteca.js'></script>
 <script src='js/App.js'></script>
+<script src='js/main.js'></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.js"></script>

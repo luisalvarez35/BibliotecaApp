@@ -14,6 +14,17 @@
 
 
     <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            app = new App();
+
+
+            document.getElementById('titulo').innerHTML= app.getCookie('titulo');
+            document.getElementById('genero').innerHTML= app.getCookie('genero');
+            document.getElementById('isbn').innerHTML= app.getCookie('isbn');
+            document.getElementById('ejemplares').innerHTML= app.getCookie('ejemplares');
+
+
+        });
 
 
     </script>
@@ -63,7 +74,12 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h1>Titulo</h1>
-                                    <h2>Titulo del libro</h2>
+                                    <h2 id="titulo">Titulo del libro</h2>
+                                    <h3>Genero</h3>
+                                    <h4 id="genero">Genero del libro</h4>
+                                    <h5>ISBN</h5>
+                                    <p id="isbn">isbn</p>
+                                    <p >Ejemplares: <span id="ejemplares">Numero de ejemplares</span></p>
                                 </div>
 
                                 <div class="col-12">
